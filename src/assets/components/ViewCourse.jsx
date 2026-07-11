@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import NavBar from "./NavBar";
 
 const ViewCourses = () => {
 
   const [data, changeData] = useState([]);
 
-  const API_URL = "http://192.168.33.245:5001/api/courses";
+ 
 
   const fetchData = () => {
     axios
-      .get(API_URL)
+      .get("http://192.168.33.245:5001/api/courses")
       .then((response) => {
         changeData(response.data);
       })
@@ -24,7 +25,7 @@ const ViewCourses = () => {
 
   return (
     <div>
-
+<NavBar/>
 
       <div className="container mt-4">
 
