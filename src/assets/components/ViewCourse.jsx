@@ -10,7 +10,7 @@ const ViewCourses = () => {
 
   const fetchData = () => {
     axios
-      .get("http://192.168.33.245:5001/api/courses")
+      .get("https://host-demo-app.onrender.com/api/courses")
       .then((response) => {
         changeData(response.data);
       })
@@ -38,7 +38,7 @@ const ViewCourses = () => {
 
             <thead className="table-dark">
               <tr>
-                <th>ID</th>
+               
                 <th>Course Name</th>
                 <th>Duration</th>
                 <th>Fee (₹)</th>
@@ -51,7 +51,7 @@ const ViewCourses = () => {
             <tbody>
               {data.map((value, index) => (
                 <tr key={index}>
-                  <td>{value.id}</td>
+            
                   <td>{value.course_name}</td>
                   <td>{value.duration}</td>
                   <td>₹{value.fee}</td>
