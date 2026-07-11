@@ -4,6 +4,7 @@ import viteLogo from './assets/vite.svg'
 import heroImg from './assets/hero.png'
 import './App.css'
 import InsertCourse from './assets/components/InsertCourse'
+import ViewCourses from './assets/components/ViewCourse'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -14,6 +15,7 @@ function App() {
 
 
 <InsertCourse/>
+<ViewCourses/>
 
     </>
   )
