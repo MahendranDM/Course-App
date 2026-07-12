@@ -1,7 +1,53 @@
-import React from 'react'
+import React, { useState } from 'react'
 import NavBar from './NavBar'
+import axios from 'axios'
 
 const InsertCourse = () => {
+
+
+ const [input, changeInput] = useState(
+
+  {
+
+
+     course_name: "",
+    duration: "",
+    fee:"" ,
+    mode: "",
+    trainer: ""
+
+  }
+ )
+ 
+const inputHandler = (event) => {
+changeInput({...input,[event.target.name]:event.target.value})
+ 
+}
+
+const readValue=() => {
+
+console.log(input)
+
+
+
+axios.post("https://host-demo-app.onrender.com/api/add-course",input).then(
+(response) =>{
+
+console.log(response.data)
+
+alert("Course Added Successfully")
+
+}
+
+).catch((error) => {
+  console.log(error)
+  alert("Failed to add course")
+})
+
+}
+
+
+
   return (
     <div>
         <NavBar/>
@@ -17,7 +63,11 @@ const InsertCourse = () => {
           <input
             type="text"
             className="form-control"
+            name="course_name"
+            value={input.course_name}
             placeholder="Enter Course Name"
+
+            onChange={inputHandler}
           />
         </div>
 
@@ -26,7 +76,10 @@ const InsertCourse = () => {
           <input
             type="text"
             className="form-control"
+            name="duration"
+            value={input.duration}
             placeholder="e.g. 7 Days"
+            onChange={inputHandler}
           />
         </div>
 
@@ -35,17 +88,20 @@ const InsertCourse = () => {
           <input
             type="number"
             className="form-control"
+            name="fee"
+            value={input.fee}
             placeholder="Enter Course Fee"
+            onChange={inputHandler}
           />
         </div>
 
         <div className="col-12 col-sm-6 col-md-4">
           <label className="form-label"> Payment Mode</label>
-          <select className="form-select">
-            <option>Select Mode</option>
-            <option>Online</option>
-            <option>Offline</option>
-            <option>Hybrid</option>
+          <select className="form-select" name="mode" value={input.mode} onChange={inputHandler}>
+            <option value="">Select Mode</option>
+            <option value="Online">Online</option>
+            <option value="Offline">Offline</option>
+            <option value="Hybrid">Hybrid</option>
           </select>
         </div>
 
@@ -54,12 +110,15 @@ const InsertCourse = () => {
           <input
             type="text"
             className="form-control"
+            name="trainer"
+            value={input.trainer}
             placeholder="Enter Trainer Name"
+            onChange={inputHandler}
           />
         </div>
 
         <div className="col-12">
-          <button className="btn btn-success">
+          <button className="btn btn-success"  onClick={readValue}>
             Add Course
           </button>
         </div>
