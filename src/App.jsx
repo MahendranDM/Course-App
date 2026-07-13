@@ -3,9 +3,9 @@ import reactLogo from './assets/react.svg'
 import viteLogo from './assets/vite.svg'
 import heroImg from './assets/hero.png'
 import './App.css'
-import InsertCourse from './assets/components/InsertCourse'
-import ViewCourses from './assets/components/ViewCourse'
-import NavBar from './assets/components/NavBar'
+import InsertCourse from './components/InsertCourse'
+import ViewCourses from './components/ViewCourse'
+import NavBar from './components/NavBar'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
 function App() {
